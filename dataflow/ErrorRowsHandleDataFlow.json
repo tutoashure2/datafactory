@@ -1,0 +1,45 @@
+{
+	"name": "ErrorRowsHandleDataFlow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "SalesIndiaDataset",
+						"type": "DatasetReference"
+					},
+					"name": "SalesIND"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "tableSalesDataset",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				}
+			],
+			"transformations": [
+				{
+					"name": "ConditionalSplit1"
+				},
+				{
+					"name": "FileNameColumnErrorRows"
+				},
+				{
+					"name": "FileNamecolforGoodRows"
+				}
+			],
+			"script": "source(output(\n\t\tsaleDate as string,\n\t\tsalesItem as string,\n\t\tcountry as string,\n\t\tquantity as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> SalesIND\nSalesIND split(isNull(toDate(saleDate, 'yyy-MM-dd')),\n\tdisjoint: false) ~> ConditionalSplit1@(ErrorRows, GoodRows)\nConditionalSplit1@ErrorRows derive(fileName = 'SalesIND_2020_MAY_01.csv') ~> FileNameColumnErrorRows\nConditionalSplit1@GoodRows derive(fileName = 'SalesIND_2020_MAY_01.csv',\n\t\tsaleDate = toDate(saleDate, 'yyyy-MM-dd'),\n\t\tquantity = toInteger(quantity)) ~> FileNamecolforGoodRows\nFileNameColumnErrorRows sink(input(\n\t\tsaleDate as string,\n\t\tsalesItem as string,\n\t\tcountry as string,\n\t\tquantity as integer,\n\t\tfileName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tmapColumn(\n\t\tsaleDate,\n\t\tsalesItem,\n\t\tcountry,\n\t\tquantity,\n\t\tfileName\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1\nFileNamecolforGoodRows sink(input(\n\t\tsaleDate as date,\n\t\tsalesItem as string,\n\t\tcountry as string,\n\t\tquantity as integer,\n\t\tfileName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tmapColumn(\n\t\tsaleDate,\n\t\tsalesItem,\n\t\tcountry,\n\t\tquantity,\n\t\tfileName\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink2"
+		}
+	}
+}
