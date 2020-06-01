@@ -1,0 +1,33 @@
+{
+	"name": "ds_SQLTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkedSerivce_Sql",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"dbName": {
+					"value": "@dataset().ds_dbName",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"tblName": {
+				"type": "string"
+			},
+			"ds_dbName": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().tblName",
+				"type": "Expression"
+			}
+		}
+	}
+}

@@ -1,0 +1,74 @@
+{
+	"name": "pipeline2",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "SqlServerSink"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_SQLTable",
+						"type": "DatasetReference",
+						"parameters": {
+							"tblName": {
+								"value": "@pipeline().parameters.tableNameFromPipeline",
+								"type": "Expression"
+							},
+							"ds_dbName": {
+								"value": "@pipeline().parameters.dbNameFromPipeline",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_SQLTable",
+						"type": "DatasetReference",
+						"parameters": {
+							"tblName": {
+								"value": "@pipeline().parameters.destinationTable",
+								"type": "Expression"
+							},
+							"ds_dbName": {
+								"value": "@pipeline().parameters.dbNameFromPipeline",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"tableNameFromPipeline": {
+				"type": "string"
+			},
+			"dbNameFromPipeline": {
+				"type": "string"
+			},
+			"destinationTable": {
+				"type": "string"
+			}
+		},
+		"annotations": []
+	}
+}
