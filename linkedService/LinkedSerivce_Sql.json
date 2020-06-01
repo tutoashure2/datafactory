@@ -4,16 +4,20 @@
 	"properties": {
 		"parameters": {
 			"dbName": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "sqlcloud"
 			},
 			"serverName": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "servertuto.database.windows.net"
 			},
 			"userName": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "tutovelasquez"
 			},
 			"passValue": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Ferr4rys"
 			}
 		},
 		"annotations": [],
