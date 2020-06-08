@@ -1,0 +1,37 @@
+{
+	"name": "CatalagoProcesoDS_DB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DevSQLServerLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "codigoCatalogo",
+				"type": "varchar"
+			},
+			{
+				"name": "nombreCatalogo",
+				"type": "varchar"
+			},
+			{
+				"name": "nombrePipeline",
+				"type": "varchar"
+			},
+			{
+				"name": "frecuencia",
+				"type": "varchar"
+			},
+			{
+				"name": "objeto",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "CatalogoProceso"
+		}
+	}
+}

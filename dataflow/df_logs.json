@@ -1,0 +1,28 @@
+{
+	"name": "df_logs",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "catalogoProceso",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "CatalagoProcesoDS_DB",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [],
+			"script": "source(output(\n\t\tcodigoCatalogo as string,\n\t\tnombreCatalogo as string,\n\t\tnombrePipeline as string,\n\t\tfrecuencia as string,\n\t\tobjeto as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> source1\nsource1 sink(input(\n\t\tcodigoCatalogo as string,\n\t\tnombreCatalogo as string,\n\t\tnombrePipeline as string,\n\t\tfrecuencia as string,\n\t\tobjeto as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tmapColumn(\n\t\tcodigoCatalogo,\n\t\tnombreCatalogo,\n\t\tnombrePipeline,\n\t\tfrecuencia,\n\t\tobjeto\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}
