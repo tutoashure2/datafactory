@@ -1,0 +1,44 @@
+{
+	"name": "catalogoProceso",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "catalago.csv",
+				"container": "logs"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "codigoCatalogo",
+				"type": "String"
+			},
+			{
+				"name": "nombreCatalogo",
+				"type": "String"
+			},
+			{
+				"name": "nombrePipeline",
+				"type": "String"
+			},
+			{
+				"name": "frecuencia",
+				"type": "String"
+			},
+			{
+				"name": "objeto",
+				"type": "String"
+			}
+		]
+	}
+}
