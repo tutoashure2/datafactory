@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "dfazuretuto1"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"DevSQLServerLinkedService_connectionString": {
+			"value": ""
+		},
+		"LinkedSerivce_Sql_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://sadfazuretuto1.dfs.core.windows.net"
+		},
+		"HttpServer1_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv"
+		},
+		"trigger1_properties_pipeline2_parameters_tableNameFromPipeline": {
+			"value": "tblAutor"
+		},
+		"trigger1_properties_pipeline2_parameters_dbNameFromPipeline": {
+			"value": "sqlcloud"
+		},
+		"trigger1_properties_pipeline2_parameters_destinationTable": {
+			"value": "tblNewAutor"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

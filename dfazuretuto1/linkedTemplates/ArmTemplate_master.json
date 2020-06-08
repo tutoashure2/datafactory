@@ -1,0 +1,105 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "dfazuretuto1"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"DevSQLServerLinkedService_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'DevSQLServerLinkedService'"
+		},
+		"LinkedSerivce_Sql_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LinkedSerivce_Sql'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sadfazuretuto1.dfs.core.windows.net"
+		},
+		"HttpServer1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv"
+		},
+		"trigger1_properties_pipeline2_parameters_tableNameFromPipeline": {
+			"type": "string",
+			"defaultValue": "tblAutor"
+		},
+		"trigger1_properties_pipeline2_parameters_dbNameFromPipeline": {
+			"type": "string",
+			"defaultValue": "sqlcloud"
+		},
+		"trigger1_properties_pipeline2_parameters_destinationTable": {
+			"type": "string",
+			"defaultValue": "tblNewAutor"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureBlobStorage1_connectionString": {
+						"value": "[parameters('AzureBlobStorage1_connectionString')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"DevSQLServerLinkedService_connectionString": {
+						"value": "[parameters('DevSQLServerLinkedService_connectionString')]"
+					},
+					"LinkedSerivce_Sql_connectionString": {
+						"value": "[parameters('LinkedSerivce_Sql_connectionString')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"HttpServer1_properties_typeProperties_url": {
+						"value": "[parameters('HttpServer1_properties_typeProperties_url')]"
+					},
+					"trigger1_properties_pipeline2_parameters_tableNameFromPipeline": {
+						"value": "[parameters('trigger1_properties_pipeline2_parameters_tableNameFromPipeline')]"
+					},
+					"trigger1_properties_pipeline2_parameters_dbNameFromPipeline": {
+						"value": "[parameters('trigger1_properties_pipeline2_parameters_dbNameFromPipeline')]"
+					},
+					"trigger1_properties_pipeline2_parameters_destinationTable": {
+						"value": "[parameters('trigger1_properties_pipeline2_parameters_destinationTable')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
