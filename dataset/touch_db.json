@@ -1,0 +1,103 @@
+{
+	"name": "touch_db",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DevSQLServerLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "BCP_ActivityStartDate",
+				"type": "date"
+			},
+			{
+				"name": "BCP_Description",
+				"type": "varchar"
+			},
+			{
+				"name": "BCP_Id_Adobe_Campaing",
+				"type": "varchar"
+			},
+			{
+				"name": "BCP_InteractionChannel",
+				"type": "varchar"
+			},
+			{
+				"name": "BCP_InteractionProduct",
+				"type": "varchar"
+			},
+			{
+				"name": "BCP_Registro_Adobe_Campaing",
+				"type": "varchar"
+			},
+			{
+				"name": "BCP_Status",
+				"type": "varchar"
+			},
+			{
+				"name": "BCP_Type",
+				"type": "varchar"
+			},
+			{
+				"name": "BCP_WhatId",
+				"type": "varchar"
+			},
+			{
+				"name": "CreatedById",
+				"type": "varchar"
+			},
+			{
+				"name": "CreatedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CurrencyIsoCode",
+				"type": "varchar"
+			},
+			{
+				"name": "Id",
+				"type": "varchar"
+			},
+			{
+				"name": "IsDeleted",
+				"type": "bit"
+			},
+			{
+				"name": "LastModifiedById",
+				"type": "varchar"
+			},
+			{
+				"name": "LastModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Name",
+				"type": "varchar"
+			},
+			{
+				"name": "OwnerId",
+				"type": "varchar"
+			},
+			{
+				"name": "RecordTypeId",
+				"type": "varchar"
+			},
+			{
+				"name": "SystemModstamp",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "BCP_Touch_Points_CRMA"
+		}
+	}
+}
