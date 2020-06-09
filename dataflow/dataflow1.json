@@ -1,0 +1,20 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "touch_db",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"script": "source(output(\n\t\tBCP_ActivityStartDate as date,\n\t\tBCP_Description as string,\n\t\tBCP_Id_Adobe_Campaing as string,\n\t\tBCP_InteractionChannel as string,\n\t\tBCP_InteractionProduct as string,\n\t\tBCP_Registro_Adobe_Campaing as string,\n\t\tBCP_Status as string,\n\t\tBCP_Type as string,\n\t\tBCP_WhatId as string,\n\t\tCreatedById as string,\n\t\tCreatedDate as timestamp,\n\t\tCurrencyIsoCode as string,\n\t\tId as string,\n\t\tIsDeleted as boolean,\n\t\tLastModifiedById as string,\n\t\tLastModifiedDate as timestamp,\n\t\tName as string,\n\t\tOwnerId as string,\n\t\tRecordTypeId as string,\n\t\tSystemModstamp as timestamp\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> source1"
+		}
+	}
+}
