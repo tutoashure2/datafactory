@@ -97,7 +97,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "BCP_Touch_Points_CRMA"
+			"table": "BCP_Touch_Points_CRMA1"
 		}
 	}
 }
