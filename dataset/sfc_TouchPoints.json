@@ -1,0 +1,15 @@
+{
+	"name": "sfc_TouchPoints",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_salesforce",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "BCP_Touch_Points_CRMA__c"
+		}
+	}
+}
