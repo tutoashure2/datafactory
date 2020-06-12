@@ -8,7 +8,11 @@
 			"environmentUrl": "https://test.salesforce.com",
 			"username": "adobecampaingint@bcp.com.pe.coeid",
 			"apiVersion": "48.0",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRGQVpVUkVUVVRPMV8yMzM2YWRhNS03ZGIzLTQ4ZGMtYmNiNC1lMWE1ZTJlYWNmNjYiDQp9"
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRGQVpVUkVUVVRPMV8zMmQ3NTFlNi1hNDMyLTQ3MDYtODI4ZC1kNTMzYjk4NGZjNGMiDQp9"
+		},
+		"connectVia": {
+			"referenceName": "intRuntimeAzure",
+			"type": "IntegrationRuntimeReference"
 		}
 	}
 }
