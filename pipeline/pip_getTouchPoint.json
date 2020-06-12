@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SalesforceSource",
-						"query": "SELECT BCP_Description__c, BCP_InteractionChannel__c FROM BCP_Touch_Points_CRMA__c LIMIT 100",
+						"query": "SELECT Id,BCP_Description__c, BCP_InteractionChannel__c FROM BCP_Touch_Points_CRMA__c LIMIT 100",
 						"readBehavior": "query"
 					},
 					"sink": {
