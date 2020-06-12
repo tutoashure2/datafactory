@@ -24,7 +24,7 @@
 						"type": "AzureSqlSink",
 						"sqlWriterStoredProcedureName": "[dbo].[spUpsertBCP_Touch_Points_CRMA]",
 						"sqlWriterTableType": "BCP_Touch_Points_CRMAType",
-						"storedProcedureTableTypeParameterName": "@bcpTouchPoint"
+						"storedProcedureTableTypeParameterName": "bcpTouchPoint"
 					},
 					"enableStaging": false,
 					"parallelCopies": 1
