@@ -27,7 +27,222 @@
 						"storedProcedureTableTypeParameterName": "bcpTouchPoint"
 					},
 					"enableStaging": false,
-					"parallelCopies": 1
+					"parallelCopies": 1,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RowKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_ActivityStartDate__c",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "BCP_ActivityStartDate__c",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_AzureStatus__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BCP_AzureStatus__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_Description__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BCP_Description__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_Id_Adobe_Campaing__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BCP_Id_Adobe_Campaing__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_InteractionChannel__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BCP_InteractionChannel__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_InteractionProduct__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BCP_InteractionProduct__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_Registro_Adobe_Campaing__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BCP_Registro_Adobe_Campaing__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_Status__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BCP_Status__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_Type__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BCP_Type__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_WhatId__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BCP_WhatId__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CreatedById",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CreatedById",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrencyIsoCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrencyIsoCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsDeleted",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "IsDeleted",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "LastModifiedById",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LastModifiedById",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LastModifiedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LastModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OwnerId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OwnerId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RecordTypeId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RecordTypeId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SystemModstamp",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "SystemModstamp",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
