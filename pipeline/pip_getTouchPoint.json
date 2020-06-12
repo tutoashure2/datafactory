@@ -279,7 +279,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT Id, 'P' BCP_AzureStatus__c FROM [dbo].[BCP_Touch_Points_CRMA] WHERE BCP_AzureStatus__c = 'D'",
+						"sqlReaderQuery": "SELECT TOP 10 Id, 'P' BCP_AzureStatus__c FROM [dbo].[BCP_Touch_Points_CRMA] WHERE BCP_AzureStatus__c = 'D'",
 						"queryTimeout": "02:00:00"
 					},
 					"sink": {
