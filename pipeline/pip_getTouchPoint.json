@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "Descarga BCPTouchPoints",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -22,7 +22,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"sqlWriterStoredProcedureName": "[dbo].[spUpsertBCP_Touch_Points_CRMA]",
+						"sqlWriterStoredProcedureName": "[dbo].[uspUpsertBCP_Touch_Points_CRMA]",
 						"sqlWriterTableType": "BCP_Touch_Points_CRMAType",
 						"storedProcedureTableTypeParameterName": "bcpTouchPoint"
 					},
