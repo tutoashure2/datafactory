@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SalesforceSource",
-						"query": "SELECT Id,BCP_ActivityStartDate__c,BCP_AzureStatus__c,BCP_Description__c,BCP_Id_Adobe_Campaing__c,BCP_InteractionChannel__c,BCP_InteractionProduct__c,\nBCP_Registro_Adobe_Campaing__c,BCP_Status__c,BCP_Type__c,BCP_WhatId__c,CreatedById,CreatedDate,CurrencyIsoCode,IsDeleted,LastModifiedById,LastModifiedDate,\nName,OwnerId,RecordTypeId,SystemModstamp FROM BCP_Touch_Points_CRMA__c WHERE BCP_AzureStatus__c != 'P' LIMIT 10",
+						"query": "SELECT Id,BCP_ActivityStartDate__c,BCP_AzureStatus__c,BCP_Description__c,BCP_Id_Adobe_Campaing__c,BCP_InteractionChannel__c,BCP_InteractionProduct__c,\nBCP_Registro_Adobe_Campaing__c,BCP_Status__c,BCP_Type__c,BCP_WhatId__c,CreatedById,CreatedDate,CurrencyIsoCode,IsDeleted,LastModifiedById,LastModifiedDate,\nName,OwnerId,RecordTypeId,SystemModstamp FROM BCP_Touch_Points_CRMA__c WHERE BCP_AzureStatus__c != 'P' LIMIT 90",
 						"readBehavior": "query"
 					},
 					"sink": {
