@@ -258,7 +258,7 @@
 				]
 			},
 			{
-				"name": "Update Salesforce",
+				"name": "Update Salesforce BCPTouchPoints",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -334,7 +334,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Update Salesforce",
+						"activity": "Update Salesforce BCPTouchPoints",
 						"dependencyConditions": [
 							"Succeeded"
 						]
