@@ -258,7 +258,7 @@
 				]
 			},
 			{
-				"name": "Procesar Salesforce",
+				"name": "Update Salesforce",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -330,11 +330,11 @@
 				]
 			},
 			{
-				"name": "Copy data1",
+				"name": "Update BCP_Azure_Status",
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Procesar Salesforce",
+						"activity": "Update Salesforce",
 						"dependencyConditions": [
 							"Succeeded"
 						]
