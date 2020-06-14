@@ -1,6 +1,7 @@
 {
-	"name": "pip_getTouchPoint_copy1",
+	"name": "pip_ProcessTouchPointsCRMA",
 	"properties": {
+		"description": "Proceso que Descarga de SF y registra en Azure",
 		"activities": [
 			{
 				"name": "Descarga BCPTouchPoints",
