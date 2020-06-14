@@ -349,7 +349,8 @@
 				},
 				"userProperties": [
 					{
-						"name": "@Valor"
+						"name": "@Valor",
+						"value": "1"
 					}
 				],
 				"typeProperties": {
