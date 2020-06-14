@@ -328,6 +328,61 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Stored procedure1",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Descarga BCPTouchPoints",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "@Valor"
+					}
+				],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[uspInsertBitacoraProceso]",
+					"storedProcedureParameters": {
+						"codigoBitacoraProceso": {
+							"value": "@Valor",
+							"type": "Int64"
+						},
+						"codigoCatalogo": {
+							"value": "'@P1AXFD001'",
+							"type": "String"
+						},
+						"estado": {
+							"value": {
+								"value": "@bool(0)",
+								"type": "Expression"
+							},
+							"type": "Boolean"
+						},
+						"fechaHoraInicio": {
+							"value": {
+								"value": "@formatDateTime(utcnow())",
+								"type": "Expression"
+							},
+							"type": "DateTime"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "DevSQLServerLinkedService",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"annotations": []
