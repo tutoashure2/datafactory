@@ -446,7 +446,8 @@
 					"dataset": {
 						"referenceName": "dsBitacoraProceso",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			}
 		],
