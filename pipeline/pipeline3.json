@@ -29,7 +29,7 @@
 							"estado": {
 								"type": "Boolean",
 								"value": {
-									"value": "@bool(1)",
+									"value": "@bool(0)",
 									"type": "Expression"
 								}
 							},
