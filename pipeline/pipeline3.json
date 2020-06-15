@@ -51,8 +51,8 @@
 				}
 			},
 			{
-				"name": "Update Bitacora Proceso",
-				"type": "Lookup",
+				"name": "Stored procedure1",
+				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
 						"activity": "Lookup1",
@@ -70,46 +70,41 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"source": {
-						"type": "AzureSqlSource",
-						"sqlReaderStoredProcedureName": "[dbo].[uspUpdateBitacoraProceso]",
-						"storedProcedureParameters": {
-							"codigoBitacoraProceso": {
-								"type": "Int64",
-								"value": {
-									"value": "@activity('Lookup1').output.value[0].codigoBitacoraProceso",
-									"type": "Expression"
-								}
+					"storedProcedureName": "[dbo].[uspUpdateBitacoraProceso]",
+					"storedProcedureParameters": {
+						"codigoBitacoraProceso": {
+							"value": {
+								"value": "@activity('Lookup1').output.value[0].codigoBitacoraProceso",
+								"type": "Expression"
 							},
-							"codigoCatalogo": {
-								"type": "String",
-								"value": {
-									"value": "@concat('@','P1AXFD001')",
-									"type": "Expression"
-								}
-							},
-							"estado": {
-								"type": "Boolean",
-								"value": {
-									"value": "@bool(1)",
-									"type": "Expression"
-								}
-							},
-							"fechaHoraFin": {
-								"type": "DateTime",
-								"value": {
-									"value": "@utcnow()",
-									"type": "Expression"
-								}
-							}
+							"type": "Int64"
 						},
-						"queryTimeout": "02:00:00"
-					},
-					"dataset": {
-						"referenceName": "dsBitacoraProceso",
-						"type": "DatasetReference"
-					},
-					"firstRowOnly": false
+						"codigoCatalogo": {
+							"value": {
+								"value": "@concat('@','P1AXFD001')",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"estado": {
+							"value": {
+								"value": "@bool(1)",
+								"type": "Expression"
+							},
+							"type": "Boolean"
+						},
+						"fechaHoraFin": {
+							"value": {
+								"value": "@utcnow()",
+								"type": "Expression"
+							},
+							"type": "DateTime"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "DevSQLServerLinkedService",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
