@@ -19,10 +19,6 @@
 						"type": "AzureSqlSource",
 						"sqlReaderStoredProcedureName": "[dbo].[uspInsertBitacoraProceso]",
 						"storedProcedureParameters": {
-							"codigoBitacoraProceso": {
-								"type": "Int64",
-								"value": "1"
-							},
 							"codigoCatalogo": {
 								"type": "String",
 								"value": {
