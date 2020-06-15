@@ -444,6 +444,66 @@
 					"referenceName": "DevSQLServerLinkedService",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "Stored procedure1",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Update Salesforce BCPTouchPoints",
+						"dependencyConditions": [
+							"Completed"
+						]
+					},
+					{
+						"activity": "Inserta Bitacora Proceso",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[uspUpdateBitacoraProceso]",
+					"storedProcedureParameters": {
+						"codigoBitacoraProceso": {
+							"value": "",
+							"type": "Int64"
+						},
+						"codigoCatalogo": {
+							"value": {
+								"value": "@concat('@','P1AXFD001')",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"estado": {
+							"value": {
+								"value": "@bool(1)",
+								"type": "Expression"
+							},
+							"type": "Boolean"
+						},
+						"fechaHoraFin": {
+							"value": {
+								"value": "@utcnow()",
+								"type": "Expression"
+							},
+							"type": "DateTime"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "DevSQLServerLinkedService",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"annotations": []
