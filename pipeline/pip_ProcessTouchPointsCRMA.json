@@ -418,7 +418,10 @@
 							"type": "Int64"
 						},
 						"codigoCatalogo": {
-							"value": "'@P1AXFD001'",
+							"value": {
+								"value": "@concat('@','P1AXFD001')",
+								"type": "Expression"
+							},
 							"type": "String"
 						},
 						"estado": {
