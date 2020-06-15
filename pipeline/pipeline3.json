@@ -49,6 +49,68 @@
 					},
 					"firstRowOnly": false
 				}
+			},
+			{
+				"name": "Update Bitacora Proceso",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[uspUpdateBitacoraProceso]",
+						"storedProcedureParameters": {
+							"codigoBitacoraProceso": {
+								"type": "Int64",
+								"value": {
+									"value": "@activity('Insert bitacora Proceso').output.value[0].codigoBitacoraProceso",
+									"type": "Expression"
+								}
+							},
+							"codigoCatalogo": {
+								"type": "String",
+								"value": {
+									"value": "@concat('@','P1AXFD001')",
+									"type": "Expression"
+								}
+							},
+							"estado": {
+								"type": "Boolean",
+								"value": {
+									"value": "@bool(1)",
+									"type": "Expression"
+								}
+							},
+							"fechaHoraFin": {
+								"type": "DateTime",
+								"value": {
+									"value": "@utcnow()",
+									"type": "Expression"
+								}
+							}
+						},
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "dsBitacoraProceso",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
 			}
 		],
 		"annotations": []
