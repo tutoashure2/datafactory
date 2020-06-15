@@ -392,60 +392,6 @@
 				]
 			},
 			{
-				"name": "Inserta Bitacora Proceso",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "Descarga BCPTouchPoints",
-						"dependencyConditions": [
-							"Completed"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[dbo].[uspInsertBitacoraProceso]",
-					"storedProcedureParameters": {
-						"codigoBitacoraProceso": {
-							"value": null,
-							"type": "Int64"
-						},
-						"codigoCatalogo": {
-							"value": {
-								"value": "@concat('@','P1AXFD001')",
-								"type": "Expression"
-							},
-							"type": "String"
-						},
-						"estado": {
-							"value": {
-								"value": "@bool(0)",
-								"type": "Expression"
-							},
-							"type": "Boolean"
-						},
-						"fechaHoraInicio": {
-							"value": {
-								"value": "@utcnow()",
-								"type": "Expression"
-							},
-							"type": "DateTime"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "DevSQLServerLinkedService",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
 				"name": "Stored procedure1",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
@@ -456,7 +402,7 @@
 						]
 					},
 					{
-						"activity": "Inserta Bitacora Proceso",
+						"activity": "Lookup1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -503,6 +449,64 @@
 				"linkedServiceName": {
 					"referenceName": "DevSQLServerLinkedService",
 					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Descarga BCPTouchPoints",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[uspInsertBitacoraProceso]",
+						"storedProcedureParameters": {
+							"codigoBitacoraProceso": {
+								"type": "Int64",
+								"value": null
+							},
+							"codigoCatalogo": {
+								"type": "String",
+								"value": {
+									"value": "@concat('@','P1AXFD001')",
+									"type": "Expression"
+								}
+							},
+							"estado": {
+								"type": "Boolean",
+								"value": {
+									"value": "@bool(1)",
+									"type": "Expression"
+								}
+							},
+							"fechaHoraInicio": {
+								"type": "DateTime",
+								"value": {
+									"value": "@utcnow()",
+									"type": "Expression"
+								}
+							}
+						},
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "dsBitacoraProceso",
+						"type": "DatasetReference"
+					}
 				}
 			}
 		],
