@@ -417,7 +417,7 @@
 						"storedProcedureParameters": {
 							"codigoBitacoraProceso": {
 								"type": "Int64",
-								"value": null
+								"value": "1"
 							},
 							"codigoCatalogo": {
 								"type": "String",
