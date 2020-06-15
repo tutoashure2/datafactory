@@ -477,16 +477,32 @@
 						"sqlReaderStoredProcedureName": "[dbo].[uspUpdateBitacoraProceso]",
 						"storedProcedureParameters": {
 							"codigoBitacoraProceso": {
-								"type": "Int64"
+								"type": "Int64",
+								"value": {
+									"value": "@activity('Insert bitacora Proceso').output.codigoBitacoraProceso",
+									"type": "Expression"
+								}
 							},
 							"codigoCatalogo": {
-								"type": "String"
+								"type": "String",
+								"value": {
+									"value": "@concat('@','P1AXFD001')",
+									"type": "Expression"
+								}
 							},
 							"estado": {
-								"type": "Boolean"
+								"type": "Boolean",
+								"value": {
+									"value": "@bool(1)",
+									"type": "Expression"
+								}
 							},
 							"fechaHoraFin": {
-								"type": "DateTime"
+								"type": "DateTime",
+								"value": {
+									"value": "@utcnow()",
+									"type": "Expression"
+								}
 							}
 						},
 						"queryTimeout": "02:00:00"
