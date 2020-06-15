@@ -414,7 +414,7 @@
 					"storedProcedureName": "[dbo].[uspInsertBitacoraProceso]",
 					"storedProcedureParameters": {
 						"codigoBitacoraProceso": {
-							"value": "",
+							"value": null,
 							"type": "Int64"
 						},
 						"codigoCatalogo": {
