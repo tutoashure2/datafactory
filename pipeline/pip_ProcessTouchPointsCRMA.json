@@ -479,7 +479,7 @@
 							"codigoBitacoraProceso": {
 								"type": "Int64",
 								"value": {
-									"value": "@activity('Insert bitacora Proceso').output.value.codigoBitacoraProceso",
+									"value": "@activity('Insert bitacora Proceso').output.value[0].codigoBitacoraProceso",
 									"type": "Expression"
 								}
 							},
