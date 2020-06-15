@@ -77,7 +77,7 @@
 							"codigoBitacoraProceso": {
 								"type": "Int64",
 								"value": {
-									"value": "@activity('Insert bitacora Proceso').output.value[0].codigoBitacoraProceso",
+									"value": "@activity('Lookup1').output.value[0].codigoBitacoraProceso",
 									"type": "Expression"
 								}
 							},
