@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SalesforceSource",
-						"query": "SELECT Id,BCP_ActivityStartDate__c,BCP_AzureStatus__c,BCP_Description__c,BCP_Id_Adobe_Campaing__c,BCP_InteractionChannel__c,BCP_InteractionProduct__c,\nBCP_Registro_Adobe_Campaing__c,BCP_Status__c,BCP_Type__c,BCP_WhatId__c,CreatedById,CreatedDate,CurrencyIsoCode,IsDeleted,LastModifiedById,LastModifiedDate,\nName,OwnerId,RecordTypeId,SystemModstamp FROM BCP_Touch_Points_CRMA__c LIMIT 10000",
+						"query": "SELECT Id,BCP_ActivityStartDate__c,BCP_AzureStatus__c,BCP_Description__c,BCP_Id_Adobe_Campaing__c,BCP_InteractionChannel__c,BCP_InteractionProduct__c,\nBCP_Registro_Adobe_Campaing__c,BCP_Status__c,BCP_Type__c,BCP_WhatId__c,CreatedById,CreatedDate,CurrencyIsoCode,IsDeleted,LastModifiedById,LastModifiedDate,\nName,OwnerId,RecordTypeId,SystemModstamp FROM BCP_Touch_Points_CRMA__c LIMIT 100",
 						"readBehavior": "query"
 					},
 					"sink": {
@@ -328,62 +328,6 @@
 						"type": "DatasetReference"
 					}
 				]
-			},
-			{
-				"name": "Stored procedure1",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "Descarga BCPTouchPoints",
-						"dependencyConditions": [
-							"Completed"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [
-					{
-						"name": "@Valor",
-						"value": "1"
-					}
-				],
-				"typeProperties": {
-					"storedProcedureName": "[dbo].[uspInsertBitacoraProceso]",
-					"storedProcedureParameters": {
-						"codigoBitacoraProceso": {
-							"value": "@Valor",
-							"type": "Int64"
-						},
-						"codigoCatalogo": {
-							"value": "'@P1AXFD001'",
-							"type": "String"
-						},
-						"estado": {
-							"value": {
-								"value": "@bool(0)",
-								"type": "Expression"
-							},
-							"type": "Boolean"
-						},
-						"fechaHoraInicio": {
-							"value": {
-								"value": "@formatDateTime(utcnow())",
-								"type": "Expression"
-							},
-							"type": "DateTime"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "DevSQLServerLinkedService",
-					"type": "LinkedServiceReference"
-				}
 			}
 		],
 		"annotations": []
