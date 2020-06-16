@@ -1,5 +1,5 @@
 {
-	"name": "pip_ProcessTouchPointsCRMA",
+	"name": "pip_pruebas",
 	"properties": {
 		"description": "Proceso que Descarga de SF y registra en Azure",
 		"activities": [
