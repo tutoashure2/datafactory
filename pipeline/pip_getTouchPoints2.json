@@ -1,0 +1,336 @@
+{
+	"name": "pip_getTouchPoints2",
+	"properties": {
+		"description": "Proceso que Descarga de SF y registra en Azure",
+		"activities": [
+			{
+				"name": "Descarga BCPTouchPoints",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceSource",
+						"query": "SELECT Id,BCP_ActivityStartDate__c,BCP_AzureStatus__c,BCP_Description__c,BCP_Id_Adobe_Campaing__c,BCP_InteractionChannel__c,BCP_InteractionProduct__c,\nBCP_Registro_Adobe_Campaing__c,BCP_Status__c,BCP_Type__c,BCP_WhatId__c,CreatedById,CreatedDate,CurrencyIsoCode,IsDeleted,LastModifiedById,LastModifiedDate,\nName,OwnerId,RecordTypeId,SystemModstamp FROM BCP_Touch_Points_CRMA__c WHERE BCP_AzureStatus__c != 'P' LIMIT 1320",
+						"readBehavior": "query"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[dbo].[uspUpsertBCP_Touch_Points_CRMA]",
+						"sqlWriterTableType": "BCP_Touch_Points_CRMAType",
+						"storedProcedureTableTypeParameterName": "bcpTouchPoint"
+					},
+					"enableStaging": false,
+					"parallelCopies": 1,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RowKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_ActivityStartDate__c",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "BCP_ActivityStartDate__c",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_AzureStatus__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BCP_AzureStatus__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_Description__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BCP_Description__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_Id_Adobe_Campaing__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BCP_Id_Adobe_Campaing__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_InteractionChannel__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BCP_InteractionChannel__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_InteractionProduct__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BCP_InteractionProduct__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_Registro_Adobe_Campaing__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BCP_Registro_Adobe_Campaing__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_Status__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BCP_Status__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_Type__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BCP_Type__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_WhatId__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BCP_WhatId__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CreatedById",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CreatedById",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrencyIsoCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrencyIsoCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsDeleted",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "IsDeleted",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "LastModifiedById",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LastModifiedById",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LastModifiedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LastModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OwnerId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OwnerId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RecordTypeId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RecordTypeId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SystemModstamp",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "SystemModstamp",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "sfc_TouchPoints",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "touch_db",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Update Salesforce BCPTouchPoints",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Descarga BCPTouchPoints",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT Id, 'P' BCP_AzureStatus__c FROM [dbo].[BCP_Touch_Points_CRMA] WHERE BCP_AzureStatus__c = 'D'",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 10000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "Id",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BCP_AzureStatus__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BCP_AzureStatus__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "touch_db",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "sfc_TouchPoints",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
